@@ -74,7 +74,8 @@ class Data_Input_Output(object):
                     sec_type + '/' +
                     str(names[i]) + '-historical-data')
         ## get site content and make soup
-        r = requests.get(web_site)        
+        headers = {'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/601.4.4 (KHTML, like Gecko) Version/9.0.3 Safari/601.4.4"}
+        r = requests.get(web_site, headers = headers)
         ## SOL 1 : use pd.read_html
         soup = BeautifulSoup(r.content, "lxml")
         upd_prices = pd.read_html(
